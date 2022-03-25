@@ -10,8 +10,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
+//@Table
 public class User {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
     private Long ID_user;
     private String name;
     private String username;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api")
+//@RequestMapping(path = "/api")
 @RequiredArgsConstructor
 public class UserResource {
     private final UserService userService;
