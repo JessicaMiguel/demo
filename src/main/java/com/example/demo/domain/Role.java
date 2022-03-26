@@ -11,8 +11,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table
-
+@Table(name = "Role_")
 public class Role {
     @Id
     @SequenceGenerator(
@@ -25,5 +24,6 @@ public class Role {
             generator = "role_sequence"
     )
     private Long ID_role;
+    @Column(name="name_")
     private String name;
 }

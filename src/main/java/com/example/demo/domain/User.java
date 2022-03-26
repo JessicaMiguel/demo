@@ -9,8 +9,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Clase User
+ */
+
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
-//@Table
+@Table(name="User_")
 public class User {
     @Id
     @SequenceGenerator(
@@ -23,9 +27,16 @@ public class User {
             generator = "user_sequence"
     )
     private Long ID_user;
+
+    @Column(name="name_")
     private String name;
+
+    @Column(name="username_")
     private String username;
+
+    @Column(name="password_")
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection <Role> roles = new ArrayList<>();
 }
