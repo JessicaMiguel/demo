@@ -1,11 +1,16 @@
 package com.example.demo.process;
 
+import com.example.demo.service.FileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 
 @Component
 public class FileProcess {
+
+    @Autowired
+    private FileService fileService;
 
     /**
      * metodo que se encarga de empezar el proceso de carga del archivo original.
@@ -19,6 +24,8 @@ public class FileProcess {
     public ResultProcess massiveProcess (File file){
 
         ResultProcess resultProcess = new ResultProcess();
+        //buscar como crear el idProcess, que se va a corresponder con el proceso de carga del archivo. 
+        boolean result = fileService.insertNewFile();
 
         return resultProcess;
     }

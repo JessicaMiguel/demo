@@ -4,12 +4,11 @@ public class FileServiceImpl {
 
     /**
      * Metodo que se encargaria de
-     * @param idProcess
-     * @return
+     * @return boolean T/F
      */
-    public boolean insertNewFile (String idProcess){
+    public boolean insertNewFile (){
         boolean result = false;
-        
+
         return result;
     }
 }
