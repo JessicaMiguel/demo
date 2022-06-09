@@ -5,17 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="chequePago")
+@Table(name="ChequePago")
 
-public class chequesPago {
+public class ChequesPago {
         @Id
         @SequenceGenerator(
                 name = "cheque_sequence",
@@ -54,5 +52,5 @@ public class chequesPago {
 
         @Column(name="estado_cheque")
         private String estado_cheque;
-        
+
 }
