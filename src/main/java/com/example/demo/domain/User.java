@@ -3,11 +3,12 @@ package com.example.demo.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.example.demo.domain.Role;
 
 /**
  * Clase User
