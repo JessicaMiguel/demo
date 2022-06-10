@@ -1,10 +1,14 @@
 package com.example.demo.process;
 
+import com.example.demo.domain.ChequesPago;
+import com.example.demo.service.FileChequesPagoServiceImpl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,6 +21,9 @@ import java.util.List;
  * Este metodo atrapa el archivo "cheques_pagos_mes"
  */
 public class FileProcessChecks implements FileProcess {
+
+    @Autowired
+    private FileChequesPagoServiceImpl fileChequesService;
 
     @Override
     public void readMassiveFile(File file) {
@@ -35,22 +42,15 @@ public class FileProcessChecks implements FileProcess {
             for (int i=0; i<5; i++){
                 rowIterator.next();
             }
-            //TODO: se tiene agregar el List<Clase de Cheque>
-            //List<> chequesCreate = new ArrayList<>();
+
+            List<ChequesPago> chequesCreate = new ArrayList<>();
 
             while(rowIterator.hasNext()){
                 Row recordRow = rowIterator.next();
                 Cell cell0 = recordRow.getCell(0);
-                Cell cell1 = recordRow.getCell(1);
-                Cell cell2 = recordRow.getCell(2);
-                Cell cell3 = recordRow.getCell(3);
-                Cell cell6 = recordRow.getCell(6);
-                Cell cell7 = recordRow.getCell(7);
-                Cell cell11 = recordRow.getCell(11);
-                Cell cell12 = recordRow.getCell(12);
-                Cell cell13 = recordRow.getCell(13);
-
-
+                if(!cell0.getDateCellValue().toString().isEmpty()){
+                    recordLoadMassiveFile(recordRow);
+                }
             }
 
         } catch (IOException e) {
@@ -58,4 +58,25 @@ public class FileProcessChecks implements FileProcess {
         }
 
     }
+
+    @Override
+    public void recordLoadMassiveFile(Row row) {
+
+        ChequesPago chequesPago = new ChequesPago();
+
+        chequesPago.setFecha(row.getCell(0).getDateCellValue());
+        chequesPago.setFecha_vto(row.getCell(1).getDateCellValue());
+        chequesPago.setId_banco((long) row.getCell(2).getNumericCellValue());
+        chequesPago.setDescrip_banco(row.getCell(3).getStringCellValue());
+        chequesPago.setId_cliente((long) row.getCell(6).getNumericCellValue());
+        chequesPago.setDescrip_cliente(row.getCell(7).getStringCellValue());
+        chequesPago.setCheque_nro((long) row.getCell(11).getNumericCellValue());
+        chequesPago.setImporte(row.getCell(12).getNumericCellValue());
+        chequesPago.setEstado_cheque(row.getCell(13).getStringCellValue());
+
+        this.fileChequesService.insertNewFile(chequesPago);
+
+    }
+
+
 }

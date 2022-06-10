@@ -42,11 +42,11 @@ public class CuentaCorriente {
     @Column(name="tipo_comprobante")
     private String tipo_comprobante;
 
-   // @Column(name="cuota")
-    //private Long cuota; no se para que es
+    @Column(name="cuota")
+    private Long cuota; //no se para que es
 
-   // @Column(name="concepto") es en concepto de remito o factura
-   // private Long concepto;
+    @Column(name="concepto") //es en concepto de remito o factura
+    private Long concepto;
 
     @Column(name="razon_social")
     private String razon_social;

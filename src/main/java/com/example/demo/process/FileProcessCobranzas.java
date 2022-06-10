@@ -51,4 +51,9 @@ public class FileProcessCobranzas implements FileProcess{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void recordLoadMassiveFile(Row row) {
+        //TODO
+    }
 }

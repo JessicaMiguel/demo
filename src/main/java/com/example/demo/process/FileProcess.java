@@ -1,5 +1,7 @@
 package com.example.demo.process;
 
+import org.apache.poi.ss.usermodel.Row;
+
 import java.io.File;
 
 public interface FileProcess {
@@ -11,4 +13,6 @@ public interface FileProcess {
      */
 
     public void readMassiveFile(File file);
+
+    public void recordLoadMassiveFile(Row row);
 }
