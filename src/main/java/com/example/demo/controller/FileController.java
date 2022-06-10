@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.ControllerException;
+import com.example.demo.process.BeginProcess;
 import com.example.demo.process.FileProcess;
 import com.example.demo.process.ResultProcess;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.io.File;
 public class FileController {
 
     @Autowired
-    private FileProcess fileProcess;
+    private BeginProcess fileProcess;
 
     /**
      * Metodo que recibe un archivo con información para cargar en el sistema.
@@ -26,7 +27,7 @@ public class FileController {
      * @return responseEntity con la estructura de un ResultProcess
      * @throws ControllerException lanza una excepcion con el mensaje de error
      */
-    @PostMapping(value = "file", consumes = {"multipart/form-data"})
+    @PostMapping(value = "file", consumes = {"multipart/import-data"})
     public ResponseEntity<ResultProcess> loadMassive(@RequestParam(value = "file")MultipartFile file)
             throws ControllerException {
         try{
