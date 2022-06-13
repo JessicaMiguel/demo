@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface FileService {
 
-    public boolean insertNewFile (Object objectFile);
+    public void insertNewFile (Object objectFile);
 }

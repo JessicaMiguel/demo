@@ -12,15 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 
 /**
  * Este metodo atrapa el archivo "cheques_pagos_mes"
  */
-public class FileProcessChecks implements FileProcess {
+public class FileProcessChecksImpl implements FileProcess {
 
     @Autowired
     private FileChequesPagoServiceImpl fileChequesService;
@@ -42,8 +40,6 @@ public class FileProcessChecks implements FileProcess {
             for (int i=0; i<5; i++){
                 rowIterator.next();
             }
-
-            List<ChequesPago> chequesCreate = new ArrayList<>();
 
             while(rowIterator.hasNext()){
                 Row recordRow = rowIterator.next();
