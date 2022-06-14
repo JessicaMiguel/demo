@@ -77,7 +77,7 @@ public class CuentaCorriente {
      */
     @Column(name = "tot_gen")
     private double tot_gen;
-
+  
     @Column(name="debe")
     private double debe;
 
@@ -88,13 +88,16 @@ public class CuentaCorriente {
      * El saldo anterior no se lee
      * El saldo del cliente es una consulta a la base de datos.
      @Column(name="saldo_inicial")
+
     private double saldo_inicial;
 
     @Column(name="saldo_cliente")
-    private double saldo_cliente;
-*/
+    private double saldo_cliente; 
+    */
+  
     @Column(name = "estado")
     private String estado;
+  
     /*
     Preguntar si hacer dos tablas, sino filtrar por Id_cliente (generado por la empresa de embalajes)
     para obtener todos lo items de la cuenta corriente

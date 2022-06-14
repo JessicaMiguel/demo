@@ -53,4 +53,5 @@ public class Cobranza {
 
     @Column(name= "importe")
     private double importe;
+
 }
