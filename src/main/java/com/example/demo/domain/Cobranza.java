@@ -50,4 +50,7 @@ public class Cobranza {
 
     @Column(name="razon_social")
     private String razon_social;
+
+    @Column(name= "importe")
+    private double importe;
 }

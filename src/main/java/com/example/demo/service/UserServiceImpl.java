@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service@RequiredArgsConstructor @Transactional @Slf4j
-public class UserServiceImplementation implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
