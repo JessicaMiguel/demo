@@ -24,5 +24,4 @@ public interface ChequesPagoRepository extends JpaRepository<ChequesPago, Long> 
     @Query("Select DISTINCT (Id_Cliente),(razon_social) FROM Cheques Pago")
     List<DatosCliente> findAll(Sort.Direction asc, String id_cliente);
 
-
 }

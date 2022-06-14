@@ -39,14 +39,16 @@ public class CuentaCorriente {
     @Column(name="sucursal")
     private Long sucursal;
 
-    @Column(name="tipo_comprobante")
-    private String tipo_comprobante;
+    //@Column(name="tipo_comprobante")
+    //private String tipo_comprobante;
+    @Column(name = "comprobante")
+    private String comprobante;
 
-   // @Column(name="cuota")
-    //private Long cuota; no se para que es
+    @Column(name="cuota")
+    private Long cuota; //no se para que es
 
-   // @Column(name="concepto") es en concepto de remito o factura
-   // private Long concepto;
+    @Column(name="concepto") //es en concepto de remito o factura
+    private String concepto;
 
     @Column(name="razon_social")
     private String razon_social;
@@ -60,17 +62,42 @@ public class CuentaCorriente {
     @Column(name="direccion_cliente")
     private String direccion_cliente;
 
+    /**
+     * Se tiene el tot_gen: que es el total generado entre debe + haber de un pago
+     * El atributo debe: es cuando debe el cliente de ese pago
+     * El atributo haber: es cuanto pagó el cliente
+     *
+     * Ejemplo:
+     * tot_gen  debe    haber
+     * 100      100     0
+     * 250      0       250
+     *
+     * El atributo tot_gen lo dejamos porque no sabemos si en un futuro no puede
+     * representar la suma de un debe + haber..
+     */
+    @Column(name = "tot_gen")
+    private double tot_gen;
+  
     @Column(name="debe")
     private double debe;
 
     @Column(name="haber")
     private double haber;
 
-    @Column(name="saldo_inicial")
+    /**
+     * El saldo anterior no se lee
+     * El saldo del cliente es una consulta a la base de datos.
+     @Column(name="saldo_inicial")
+
     private double saldo_inicial;
 
     @Column(name="saldo_cliente")
-    private double saldo_cliente;
+    private double saldo_cliente; 
+    */
+  
+    @Column(name = "estado")
+    private String estado;
+  
     /*
     Preguntar si hacer dos tablas, sino filtrar por Id_cliente (generado por la empresa de embalajes)
     para obtener todos lo items de la cuenta corriente

@@ -33,5 +33,4 @@ public class FileChequesPagoServiceImpl implements FileService{
         return this.chequesPagoRepository.findAll(Sort.Direction.ASC, "Id_Cliente");
     }
 
-
 }
