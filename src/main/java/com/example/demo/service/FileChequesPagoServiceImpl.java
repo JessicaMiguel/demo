@@ -16,6 +16,8 @@ public class FileChequesPagoServiceImpl implements FileService{
     @Autowired
     private ChequesPagoRepository chequesPagoRepository;
 
+
+
     @Override
     public void insertNewFile(Object objectFile) {
 
@@ -26,7 +28,7 @@ public class FileChequesPagoServiceImpl implements FileService{
 
     public List<DeltaDiasCliente> findChequesCliente(Long Id_Cliente){
 
-        return this.chequesPagoRepository.findChequesCliente(Id_Cliente);
+        return this.chequesPagoRepository.findById_Cliente(Id_Cliente);
     }
 
 
