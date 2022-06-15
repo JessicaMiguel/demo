@@ -5,12 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.Locale;
 
 @Component
 public class BeginProcess {
 
     @Autowired
-    private FileService fileService;
+    private FileProcess fileProcess;
+    @Autowired
+    private FileProcessCobranzasImpl fileProcessCobranzas;
+    @Autowired
+    private FileCuentaCorrienteImpl fileCuentaCorriente;
 
     /**
      * metodo que se encarga de empezar el proceso de carga del archivo original.
@@ -23,9 +28,26 @@ public class BeginProcess {
      */
     public ResultProcess massiveProcess (File file){
 
+        String nombre = file.getName();
         ResultProcess resultProcess = new ResultProcess();
         //buscar como crear el idProcess, que se va a corresponder con el proceso de carga del archivo. 
-        boolean result = fileService.insertNewFile();
+
+        if (nombre.toUpperCase(Locale.ROOT).contains("COBRANZAS")){
+            this.fileProcessCobranzas.readMassiveFile(file);
+        }
+        if (nombre.toUpperCase(Locale.ROOT).contains("CORRIENTE")){
+            this.fileProcessCobranzas.readMassiveFile(file);
+        }
+
+        if (nombre.toUpperCase(Locale.ROOT).contains("CHEQUE")){
+            this.fileProcessCobranzas.readMassiveFile(file);
+        }
+
+        if (nombre.toUpperCase(Locale.ROOT).contains("FACTURACION")){
+            this.fileProcessCobranzas.readMassiveFile(file);
+        }
+
+        //boolean result = fileProcess.insertNewFile();
 
         return resultProcess;
     }

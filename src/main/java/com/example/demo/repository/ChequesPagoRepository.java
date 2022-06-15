@@ -18,10 +18,13 @@ public interface ChequesPagoRepository extends JpaRepository<ChequesPago, Long> 
     //la fecha desde que entregas el prod hasta el cobro--> qué se facturo
     //cuando se entrego el pedido y cuando se cobró
 
-    @Query("Select Id_Cliente, razon_social, importe, (fecha_vto - fecha) AS dias From ChequesPago Where ID_Cliente = :Id_Cliente AND estado_cheque NOT IN ('RECHAZADO', 'DE BAJA')")
-    List<DeltaDiasCliente> findChequesCliente(@Param("Id_Cliente") Long Id_Cliente);
+    @Query("Select Id_Cliente, razon_social, importe, fecha, cheque_nro, (fecha_vto - fecha) AS dias From ChequesPago Where ID_Cliente = :Id_Cliente AND estado_cheque NOT IN ('RECHAZADO', 'DE BAJA') ORDER BY importe")
+    List<DeltaDiasCliente> findById_Cliente(@Param("Id_Cliente") Long Id_Cliente);
+
+
 
     @Query("Select DISTINCT (Id_Cliente),(razon_social) FROM Cheques Pago")
     List<DatosCliente> findAll(Sort.Direction asc, String id_cliente);
+
 
 }
