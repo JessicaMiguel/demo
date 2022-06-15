@@ -21,7 +21,7 @@ public class ChequesPagoController {
     }
 
     @GetMapping("/getClients")
-    public ResponseEntity<List<DatosCliente>> getClients(){
+    public ResponseEntity<List<com.example.demo.controller.DatosCliente>> getClients(){
         return  ResponseEntity.ok().body(fileServiceCheques.getClients());
     }
 
