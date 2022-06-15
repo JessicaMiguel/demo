@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.apiDTO.DeltaDiasCliente;
-import com.example.demo.apiDTO.DeltaDiasPago;
 import com.example.demo.controller.DatosCliente;
 import com.example.demo.domain.ChequesPago;
 import org.springframework.data.domain.Sort;
@@ -22,11 +21,10 @@ public interface ChequesPagoRepository extends JpaRepository<ChequesPago, Long> 
     @Query("Select Id_Cliente, razon_social, importe, fecha, cheque_nro, (fecha_vto - fecha) AS dias From ChequesPago Where ID_Cliente = :Id_Cliente AND estado_cheque NOT IN ('RECHAZADO', 'DE BAJA') ORDER BY importe")
     List<DeltaDiasCliente> findChequesCliente(@Param("Id_Cliente") Long Id_Cliente);
 
+
+
     @Query("Select DISTINCT (Id_Cliente),(razon_social) FROM Cheques Pago")
     List<DatosCliente> findAll(Sort.Direction asc, String id_cliente);
-
-    @Query("Select (B.fecha_vto - A.fecha) AS DiasPago, Id_Cliente, razon_social, A.tot_gen    FROM CuentaCorriente A, CuentaCorriente B WHERE A.Id_Cliente = B.Id_Cliente AND A.Id_Cliente = :Id_Cliente AND A.debe = B.haber")
-    List<DeltaDiasPago> findDeltaDiasPago(Sort.Direction asc, String Id_cliente);
 
 
 }

@@ -29,6 +29,8 @@ public class FileChequesPagoServiceImpl implements FileService{
         return this.chequesPagoRepository.findChequesCliente(Id_Cliente);
     }
 
+
+
     public List<DatosCliente> getClients(){
         return this.chequesPagoRepository.findAll(Sort.Direction.ASC, "Id_Cliente");
     }
