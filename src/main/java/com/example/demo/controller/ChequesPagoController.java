@@ -3,23 +3,26 @@ package com.example.demo.controller;
 import com.example.demo.apiDTO.DeltaDiasCliente;
 import com.example.demo.service.FileChequesPagoServiceImpl;
 import com.example.demo.service.FileCuentaCorrienteServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 @RequestMapping(path = "/api/cheque")
-@Controller
+@RestController
 public class ChequesPagoController {
 
     private final FileChequesPagoServiceImpl fileServiceCheques;
     private final FileCuentaCorrienteServiceImpl fileCuentaCorrienteService;
 
+    @Autowired
     public ChequesPagoController(FileChequesPagoServiceImpl fileServiceCheques, FileCuentaCorrienteServiceImpl fileCuentaCorrienteService) {
         this.fileServiceCheques = fileServiceCheques;
         this.fileCuentaCorrienteService = fileCuentaCorrienteService;

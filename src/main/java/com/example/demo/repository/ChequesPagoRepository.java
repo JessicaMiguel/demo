@@ -14,17 +14,10 @@ import java.util.List;
 @Repository
 public interface ChequesPagoRepository extends JpaRepository<ChequesPago, Long> {
 
-    //query que me traiga todos los cheques de un cliente y hacer la diferencia de fechas
-    //la fecha desde que entregas el prod hasta el cobro--> qué se facturo
-    //cuando se entrego el pedido y cuando se cobró
+    @Query("Select (c.fecha_vto - c.fecha) AS dias, c.Id_cliente, c.Descrip_cliente, c.importe From ChequesPago c Where c.Id_cliente = :Id_cliente AND c.estado_cheque NOT IN ('RECHAZADO', 'DE BAJA') ORDER BY importe")
+    List<DeltaDiasCliente> findById_Cliente(@Param("Id_cliente") Long Id_cliente);
 
-    @Query("Select Id_Cliente, razon_social, importe, fecha, cheque_nro, (fecha_vto - fecha) AS dias From ChequesPago Where ID_Cliente = :Id_Cliente AND estado_cheque NOT IN ('RECHAZADO', 'DE BAJA') ORDER BY importe")
-    List<DeltaDiasCliente> findById_Cliente(@Param("Id_Cliente") Long Id_Cliente);
-
-
-
-    @Query("Select DISTINCT (Id_Cliente),(razon_social) FROM Cheques Pago")
-    List<DatosCliente> findAll(Sort.Direction asc, String id_cliente);
-
+    @Query("Select DISTINCT (c.Id_cliente), c.Descrip_cliente FROM ChequesPago c")
+    List<DatosCliente> findAllClients();
 
 }

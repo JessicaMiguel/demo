@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="ChequePago")
+@Table(name="ChequesPago")
 
 public class ChequesPago {
         @Id
@@ -41,7 +41,7 @@ public class ChequesPago {
         @Column(name="Id_cliente")
         private Long Id_cliente;
 
-        @Column(name="descrip_cliente")
+        @Column(name="Descrip_cliente")
         private String Descrip_cliente;
 
         @Column(name="cheque_nro")

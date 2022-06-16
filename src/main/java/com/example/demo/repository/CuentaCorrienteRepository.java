@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface CuentaCorrienteRepository extends JpaRepository<CuentaCorriente, Long> {
 
-    @Query("Select (B.fecha_vto - A.fecha) AS DiasPago, Id_Cliente, razon_social, A.tot_gen    FROM CuentaCorriente A, CuentaCorriente B WHERE A.Id_Cliente = B.Id_Cliente AND A.Id_Cliente = :Id_Cliente AND A.debe = B.haber")
-    List<DeltaDiasCliente> findDeltaDiasPago(@Param("Id_Cliente") Long Id_cliente);
+    @Query("Select (B.fecha_vto - A.fecha_pago) AS DiasPago, A.Id_cliente, A.razon_social, A.tot_gen   FROM CuentaCorriente A, CuentaCorriente B WHERE A.Id_cliente = B.Id_cliente AND A.Id_cliente = :Id_cliente AND A.debe = B.haber")
+    List<DeltaDiasCliente> findDeltaDiasPago(@Param("Id_cliente") Long Id_cliente);
 }
